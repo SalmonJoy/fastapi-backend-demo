@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Model Providers</p>
+        <h1>Available Models</h1>
+      </div>
+      <div class="header-actions">
+        <a class="button secondary" href="/ingest.html">Ingest</a>
+        <a class="button secondary" href="/generate.html">Generate</a>
+        <button id="refreshButton" class="button" type="button">Refresh</button>
+      </div>
+    </header>
+
+    <section id="statusBanner" class="status-banner hidden" role="status"></section>
+
+    <section class="stats-grid" aria-label="Provider status">
+      <article class="stat-card">
+        <span class="stat-label">Total Models</span>
+        <strong id="totalModels">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Local</span>
+        <strong id="localModels">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Cloud</span>
+        <strong id="cloudModels">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Providers Online</span>
+        <strong id="onlineProviders">0</strong>
+      </article>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <h2>Provider Status</h2>
+      </div>
+      <div id="providerGrid" class="provider-grid"></div>
+    </section>
+
+    <section class="models-section">
+      <div class="toolbar">
+        <label>
+          <span>Model source</span>
+          <select id="sourceFilter">
+            <option value="gemini">Gemini</option>
+            <option value="ollama-cloud">Ollama cloud</option>
+            <option value="ollama-local">Ollama local</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Provider</th>
+              <th>Type</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="modelsTableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="emptyState" class="empty-state hidden">
+        <h2>No models found</h2>
+        <p>No models match the selected source.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

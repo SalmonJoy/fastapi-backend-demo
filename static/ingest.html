@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinecone Ingestion</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Pinecone</p>
+        <h1>Ingest Text</h1>
+      </div>
+      <div class="header-actions">
+        <a class="button secondary" href="/">Models</a>
+        <a class="button secondary" href="/generate.html">Generate</a>
+      </div>
+    </header>
+
+    <section id="statusBanner" class="status-banner hidden" role="status"></section>
+
+    <section class="generate-layout">
+      <form id="ingestForm" class="generate-panel">
+        <div class="form-grid">
+          <label>
+            <span>Index</span>
+            <select id="indexSelect"></select>
+          </label>
+
+          <label>
+            <span>Namespace mode</span>
+            <select id="namespaceMode">
+              <option value="existing">Select existing</option>
+              <option value="new">Create or use new</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="existingNamespaceWrap">
+          <label>
+            <span>Namespace</span>
+            <select id="namespaceSelect"></select>
+          </label>
+        </div>
+
+        <div id="newNamespaceWrap" class="hidden">
+          <label>
+            <span>New namespace</span>
+            <input id="namespaceInput" type="text" placeholder="demo-pdf">
+          </label>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            <span>Chunk size</span>
+            <input id="chunkSizeInput" type="number" min="100" value="1000">
+          </label>
+
+          <label>
+            <span>Chunk overlap</span>
+            <input id="chunkOverlapInput" type="number" min="0" value="150">
+          </label>
+        </div>
+
+        <label>
+          <span>Text</span>
+          <textarea id="textInput" rows="12" placeholder="Paste text to chunk, embed, and upsert to Pinecone"></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button id="refreshIndexesButton" class="button secondary" type="button">Refresh Indexes</button>
+          <button id="ingestButton" class="button" type="submit">Ingest Text</button>
+        </div>
+      </form>
+
+      <section class="output-panel" aria-live="polite">
+        <div class="section-heading">
+          <h2>Result</h2>
+        </div>
+        <pre id="resultBox" class="output-box">Select an index, choose a namespace, and submit text.</pre>
+      </section>
+    </section>
+  </main>
+
+  <script src="/ingest.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Text</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Text Generation</p>
+        <h1>Generate Output</h1>
+      </div>
+      <div class="header-actions">
+        <a class="button secondary" href="/ingest.html">Ingest</a>
+        <a class="button secondary" href="/">Models</a>
+      </div>
+    </header>
+
+    <section id="statusBanner" class="status-banner hidden" role="status"></section>
+
+    <section class="generate-layout">
+      <form id="generateForm" class="generate-panel">
+        <div class="form-grid">
+          <label>
+            <span>Model source</span>
+            <select id="sourceSelect">
+              <option value="gemini">Gemini</option>
+              <option value="ollama-cloud">Ollama cloud</option>
+              <option value="ollama-local">Ollama local</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Model</span>
+            <select id="modelSelect"></select>
+          </label>
+        </div>
+
+        <label>
+          <span>Input text</span>
+          <textarea id="textInput" rows="10" placeholder="Enter text to send to the selected model"></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button id="generateButton" class="button" type="submit">Generate</button>
+        </div>
+      </form>
+
+      <section class="output-panel" aria-live="polite">
+        <div class="section-heading">
+          <h2>Output</h2>
+        </div>
+        <pre id="outputBox" class="output-box">Select a model and submit text.</pre>
+      </section>
+    </section>
+  </main>
+
+  <script src="/generate.js"></script>
+</body>
+</html>
